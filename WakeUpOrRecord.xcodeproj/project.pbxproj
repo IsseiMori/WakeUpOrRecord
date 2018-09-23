@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		779CD127E92DE54B651E8AAE /* Pods_WakeUpOrRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35BD91D92C834F5908159FB0 /* Pods_WakeUpOrRecord.framework */; };
 		8595FC4E2158183F00966E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC4D2158183F00966E8A /* AppDelegate.swift */; };
 		8595FC532158183F00966E8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC512158183F00966E8A /* Main.storyboard */; };
 		8595FC562158183F00966E8A /* WakeUpOrRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC542158183F00966E8A /* WakeUpOrRecord.xcdatamodeld */; };
 		8595FC582158184100966E8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC572158184100966E8A /* Assets.xcassets */; };
 		8595FC5B2158184100966E8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC592158184100966E8A /* LaunchScreen.storyboard */; };
+		8595FC632158262E00966E8A /* cameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC622158262E00966E8A /* cameraVC.swift */; };
+		8595FC6521583D4000966E8A /* logologo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6421583D4000966E8A /* logologo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		35BD91D92C834F5908159FB0 /* Pods_WakeUpOrRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeUpOrRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8595FC4A2158183F00966E8A /* WakeUpOrRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUpOrRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8595FC4D2158183F00966E8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8595FC522158183F00966E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -22,6 +26,10 @@
 		8595FC572158184100966E8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8595FC5A2158184100966E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8595FC5C2158184100966E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8595FC622158262E00966E8A /* cameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraVC.swift; sourceTree = "<group>"; };
+		8595FC6421583D4000966E8A /* logologo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logologo.png; sourceTree = "<group>"; };
+		8952944B4A54F4A55DEBFE88 /* Pods-WakeUpOrRecord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.debug.xcconfig"; sourceTree = "<group>"; };
+		BD763AE8BBE96653A354B946 /* Pods-WakeUpOrRecord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				779CD127E92DE54B651E8AAE /* Pods_WakeUpOrRecord.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		40EF8B4D7991F7402FA02936 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8952944B4A54F4A55DEBFE88 /* Pods-WakeUpOrRecord.debug.xcconfig */,
+				BD763AE8BBE96653A354B946 /* Pods-WakeUpOrRecord.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8595FC412158183F00966E8A = {
 			isa = PBXGroup;
 			children = (
 				8595FC4C2158183F00966E8A /* WakeUpOrRecord */,
 				8595FC4B2158183F00966E8A /* Products */,
+				40EF8B4D7991F7402FA02936 /* Pods */,
+				EBB7AE047280FC4CFA7DD578 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +74,24 @@
 		8595FC4C2158183F00966E8A /* WakeUpOrRecord */ = {
 			isa = PBXGroup;
 			children = (
+				8595FC6421583D4000966E8A /* logologo.png */,
 				8595FC4D2158183F00966E8A /* AppDelegate.swift */,
 				8595FC512158183F00966E8A /* Main.storyboard */,
 				8595FC572158184100966E8A /* Assets.xcassets */,
 				8595FC592158184100966E8A /* LaunchScreen.storyboard */,
 				8595FC5C2158184100966E8A /* Info.plist */,
 				8595FC542158183F00966E8A /* WakeUpOrRecord.xcdatamodeld */,
+				8595FC622158262E00966E8A /* cameraVC.swift */,
 			);
 			path = WakeUpOrRecord;
+			sourceTree = "<group>";
+		};
+		EBB7AE047280FC4CFA7DD578 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				35BD91D92C834F5908159FB0 /* Pods_WakeUpOrRecord.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +101,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8595FC5F2158184100966E8A /* Build configuration list for PBXNativeTarget "WakeUpOrRecord" */;
 			buildPhases = (
+				0FED824F23FB7575B2456CFC /* [CP] Check Pods Manifest.lock */,
 				8595FC462158183F00966E8A /* Sources */,
 				8595FC472158183F00966E8A /* Frameworks */,
 				8595FC482158183F00966E8A /* Resources */,
@@ -124,17 +155,40 @@
 			files = (
 				8595FC5B2158184100966E8A /* LaunchScreen.storyboard in Resources */,
 				8595FC582158184100966E8A /* Assets.xcassets in Resources */,
+				8595FC6521583D4000966E8A /* logologo.png in Resources */,
 				8595FC532158183F00966E8A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0FED824F23FB7575B2456CFC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WakeUpOrRecord-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8595FC462158183F00966E8A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8595FC632158262E00966E8A /* cameraVC.swift in Sources */,
 				8595FC562158183F00966E8A /* WakeUpOrRecord.xcdatamodeld in Sources */,
 				8595FC4E2158183F00966E8A /* AppDelegate.swift in Sources */,
 			);
@@ -278,6 +332,7 @@
 		};
 		8595FC602158184100966E8A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8952944B4A54F4A55DEBFE88 /* Pods-WakeUpOrRecord.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -296,6 +351,7 @@
 		};
 		8595FC612158184100966E8A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BD763AE8BBE96653A354B946 /* Pods-WakeUpOrRecord.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

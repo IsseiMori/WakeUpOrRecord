@@ -1,0 +1,6 @@
+framework module Pods_WakeUpOrRecord {
+  umbrella header "Pods-WakeUpOrRecord-umbrella.h"
+
+  export *
+  module * { export * }
+}
