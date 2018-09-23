@@ -15,6 +15,7 @@
 		8595FC5B2158184100966E8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC592158184100966E8A /* LaunchScreen.storyboard */; };
 		8595FC632158262E00966E8A /* cameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC622158262E00966E8A /* cameraVC.swift */; };
 		8595FC6521583D4000966E8A /* logologo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6421583D4000966E8A /* logologo.png */; };
+		8595FC6721584C6400966E8A /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6621584C6400966E8A /* dog.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		8595FC5C2158184100966E8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8595FC622158262E00966E8A /* cameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraVC.swift; sourceTree = "<group>"; };
 		8595FC6421583D4000966E8A /* logologo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logologo.png; sourceTree = "<group>"; };
+		8595FC6621584C6400966E8A /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
 		8952944B4A54F4A55DEBFE88 /* Pods-WakeUpOrRecord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.debug.xcconfig"; sourceTree = "<group>"; };
 		BD763AE8BBE96653A354B946 /* Pods-WakeUpOrRecord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 				8595FC5C2158184100966E8A /* Info.plist */,
 				8595FC542158183F00966E8A /* WakeUpOrRecord.xcdatamodeld */,
 				8595FC622158262E00966E8A /* cameraVC.swift */,
+				8595FC6621584C6400966E8A /* dog.mp3 */,
 			);
 			path = WakeUpOrRecord;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8595FC5B2158184100966E8A /* LaunchScreen.storyboard in Resources */,
+				8595FC6721584C6400966E8A /* dog.mp3 in Resources */,
 				8595FC582158184100966E8A /* Assets.xcassets in Resources */,
 				8595FC6521583D4000966E8A /* logologo.png in Resources */,
 				8595FC532158183F00966E8A /* Main.storyboard in Resources */,

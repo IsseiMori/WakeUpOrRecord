@@ -25,6 +25,8 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     // ボタン
     private var button: UIButton!
     
+    var audioPlayer: AVAudioPlayer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -78,6 +80,26 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         button.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
         button.addTarget(self, action: #selector(self.onTapButton), for: .touchUpInside)
         self.view.addSubview(button)
+        
+        
+        // mp3音声(SOUND.mp3)の再生
+        playSound(name: "dog")
+        
+        // start recording
+        let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let filePath: String = path + "/test.mov"
+        let fileURL: URL = URL(fileURLWithPath: filePath)
+        
+        // 録画開始
+        myVideoOutput.startRecording(to: fileURL, recordingDelegate: self)
+        button.setTitle("STOP", for: .normal)
+        
+        sleep(5)
+        
+        // stop
+        myVideoOutput.stopRecording()
+        button.isEnabled = false
+        button.isHidden = true
     }
     
     
@@ -221,4 +243,25 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         })
     }
 
+}
+
+extension cameraVC: AVAudioPlayerDelegate {
+    func playSound(name: String) {
+        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+            print("音源ファイルが見つかりません")
+            return
+        }
+        
+        do {
+            // AVAudioPlayerのインスタンス化
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            
+            // AVAudioPlayerのデリゲートをセット
+            audioPlayer.delegate = self
+            
+            // 音声の再生
+            audioPlayer.play()
+        } catch {
+        }
+    }
 }
