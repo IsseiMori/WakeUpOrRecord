@@ -6,6 +6,7 @@ target 'WakeUpOrRecord' do
   use_frameworks!
 
   # Pods for WakeUpOrRecord
+  pod 'Eureka','<4.2.0'
 
 
 end

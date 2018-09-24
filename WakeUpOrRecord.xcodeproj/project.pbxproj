@@ -16,6 +16,8 @@
 		8595FC632158262E00966E8A /* cameraVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC622158262E00966E8A /* cameraVC.swift */; };
 		8595FC6521583D4000966E8A /* logologo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6421583D4000966E8A /* logologo.png */; };
 		8595FC6721584C6400966E8A /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6621584C6400966E8A /* dog.mp3 */; };
+		8595FC692158747600966E8A /* timerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC682158747600966E8A /* timerVC.swift */; };
+		8595FC6B2158D30200966E8A /* alarmSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC6A2158D30200966E8A /* alarmSettingVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		8595FC622158262E00966E8A /* cameraVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cameraVC.swift; sourceTree = "<group>"; };
 		8595FC6421583D4000966E8A /* logologo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logologo.png; sourceTree = "<group>"; };
 		8595FC6621584C6400966E8A /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
+		8595FC682158747600966E8A /* timerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = timerVC.swift; sourceTree = "<group>"; };
+		8595FC6A2158D30200966E8A /* alarmSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alarmSettingVC.swift; sourceTree = "<group>"; };
 		8952944B4A54F4A55DEBFE88 /* Pods-WakeUpOrRecord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.debug.xcconfig"; sourceTree = "<group>"; };
 		BD763AE8BBE96653A354B946 /* Pods-WakeUpOrRecord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,6 +89,8 @@
 				8595FC542158183F00966E8A /* WakeUpOrRecord.xcdatamodeld */,
 				8595FC622158262E00966E8A /* cameraVC.swift */,
 				8595FC6621584C6400966E8A /* dog.mp3 */,
+				8595FC682158747600966E8A /* timerVC.swift */,
+				8595FC6A2158D30200966E8A /* alarmSettingVC.swift */,
 			);
 			path = WakeUpOrRecord;
 			sourceTree = "<group>";
@@ -108,6 +114,7 @@
 				8595FC462158183F00966E8A /* Sources */,
 				8595FC472158183F00966E8A /* Frameworks */,
 				8595FC482158183F00966E8A /* Resources */,
+				771F79E36489BC15A7F395A1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,6 +192,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		771F79E36489BC15A7F395A1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -194,6 +219,8 @@
 			files = (
 				8595FC632158262E00966E8A /* cameraVC.swift in Sources */,
 				8595FC562158183F00966E8A /* WakeUpOrRecord.xcdatamodeld in Sources */,
+				8595FC692158747600966E8A /* timerVC.swift in Sources */,
+				8595FC6B2158D30200966E8A /* alarmSettingVC.swift in Sources */,
 				8595FC4E2158183F00966E8A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
