@@ -16,7 +16,7 @@ class alarmSettingVC: FormViewController {
 
         
         form +++ Section("Setting")
-            <<< TimeRow() {
+            <<< TimeRow("alarmTime") {
                 $0.title = "Alarm Time"
                 
                 let formatter = DateFormatter()
@@ -29,6 +29,26 @@ class alarmSettingVC: FormViewController {
                     print(row.value!)
                     print(NSDate())
                     print(row.value!.timeIntervalSince(NSDate() as Date))
+                })
+            <<< PickerInlineRow<String>(){
+                $0.title = "Record Duration"
+                $0.options = ["5s", "30s", "1m", "5m"]
+                $0.value = $0.options[0]
+                }.onChange({ (row) in
+                    print(row.value!)
+                })
+        
+        form +++ Section()
+            <<< ButtonRow() {
+                $0.title = "Set Alarm"
+                }.onCellSelection({ (cell, row) in
+                    print("pressed")
+                    let cameraVC = self.storyboard?.instantiateViewController(withIdentifier: "cameraVC") as! cameraVC
+                    print(self.form.allRows)
+                    let timeRow = self.form.rowBy(tag: "alarmTime") as! TimeRow
+                    cameraVC.alarmTime  = timeRow.value
+                    cameraVC.recordDuration = 5
+                    self.navigationController?.pushViewController(cameraVC, animated: true)
                 })
     }
 

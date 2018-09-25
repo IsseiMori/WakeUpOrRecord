@@ -12,6 +12,14 @@ import AssetsLibrary
 import Photos
 
 class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
+    
+    // alarm time
+    var alarmTime: Date!
+    
+    // record duration
+    var recordDuration: UInt32!
+    
+    var timer: Timer?
 
     // 録画状態フラグ
     private var recording: Bool = false
@@ -80,26 +88,19 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         button.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
         button.addTarget(self, action: #selector(self.onTapButton), for: .touchUpInside)
         self.view.addSubview(button)
+
+        let alert = UIAlertController(title: "Good Night", message: "We will wake you up", preferredStyle: UIAlertControllerStyle.alert)
+        let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
+            self.setAlarm()
+        }
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
         
-        
-        // mp3音声(SOUND.mp3)の再生
-        playSound(name: "dog")
-        
-        // start recording
-        let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-        let filePath: String = path + "/test.mov"
-        let fileURL: URL = URL(fileURLWithPath: filePath)
-        
-        // 録画開始
-        myVideoOutput.startRecording(to: fileURL, recordingDelegate: self)
-        button.setTitle("STOP", for: .normal)
-        
-        sleep(5)
-        
-        // stop
-        myVideoOutput.stopRecording()
-        button.isEnabled = false
-        button.isHidden = true
+    }
+    
+    func setAlarm() {
+        // set timer
+        self.timer = Timer.scheduledTimer(timeInterval: alarmTime.timeIntervalSince(Date()), target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
     }
     
     
@@ -122,6 +123,29 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         }
         
         self.recording = !self.recording
+    }
+    
+    @objc func startAlarm() {
+        // mp3音声(SOUND.mp3)の再生
+        playSound(name: "dog")
+        
+        // start recording
+        let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let filePath: String = path + "/test.mov"
+        let fileURL: URL = URL(fileURLWithPath: filePath)
+        
+        // 録画開始
+        myVideoOutput.startRecording(to: fileURL, recordingDelegate: self)
+        button.setTitle("STOP", for: .normal)
+        
+        if recordDuration != 0 {
+            sleep(recordDuration)
+        }
+        
+        // stop
+        myVideoOutput.stopRecording()
+        button.isEnabled = false
+        button.isHidden = true
     }
     
     
