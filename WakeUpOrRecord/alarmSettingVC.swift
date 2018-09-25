@@ -10,6 +10,9 @@ import UIKit
 import Eureka
 
 class alarmSettingVC: FormViewController {
+    
+    let durations = ["5s", "30s", "1m", "5m"]
+    let durationsInSec: [UInt32] = [5, 30, 60, 300]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +33,7 @@ class alarmSettingVC: FormViewController {
                     print(NSDate())
                     print(row.value!.timeIntervalSince(NSDate() as Date))
                 })
-            <<< PickerInlineRow<String>(){
+            <<< PickerInlineRow<String>("recordDuration"){
                 $0.title = "Record Duration"
                 $0.options = ["5s", "30s", "1m", "5m"]
                 $0.value = $0.options[0]
@@ -42,12 +45,17 @@ class alarmSettingVC: FormViewController {
             <<< ButtonRow() {
                 $0.title = "Set Alarm"
                 }.onCellSelection({ (cell, row) in
-                    print("pressed")
+                    
                     let cameraVC = self.storyboard?.instantiateViewController(withIdentifier: "cameraVC") as! cameraVC
-                    print(self.form.allRows)
+                    
+                    // set selected alarm time in Date
                     let timeRow = self.form.rowBy(tag: "alarmTime") as! TimeRow
                     cameraVC.alarmTime  = timeRow.value
-                    cameraVC.recordDuration = 5
+                    
+                    // set selected duration in seconds
+                    let pickerView = self.form.rowBy(tag: "recordDuration") as! PickerInlineRow<String>
+                    cameraVC.recordDuration = self.durationsInSec[self.durations.index(of: pickerView.value!)!]
+                    
                     self.navigationController?.pushViewController(cameraVC, animated: true)
                 })
     }

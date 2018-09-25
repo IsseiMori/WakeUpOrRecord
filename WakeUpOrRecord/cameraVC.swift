@@ -49,7 +49,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         let myImageOutput = AVCapturePhotoOutput()
         
         // バックカメラを取得
-        let camera = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .back)
+        let camera = AVCaptureDevice.default(.builtInWideAngleCamera, for: AVMediaType.video, position: .front)
         let videoInput = try! AVCaptureDeviceInput.init(device: camera!)
         
         // ビデオをセッションのInputに追加
@@ -84,10 +84,11 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         button = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
         button.backgroundColor = .red
         button.layer.masksToBounds = true
-        button.setTitle("START", for: .normal)
+        button.setTitle("STOP", for: .normal)
         button.layer.cornerRadius = 20.0
         button.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
         button.addTarget(self, action: #selector(self.onTapButton), for: .touchUpInside)
+        button.isHidden = true
         self.view.addSubview(button)
 
         let alert = UIAlertController(title: "Good Night", message: "We will wake you up", preferredStyle: UIAlertControllerStyle.alert)
@@ -101,33 +102,34 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     func setAlarm() {
         // set timer
-        // self.timer = Timer.scheduledTimer(timeInterval: alarmTime.timeIntervalSince(Date()), target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
+        var timeInterval = alarmTime.timeIntervalSince(Date())
+        if timeInterval < 0 {
+            timeInterval = timeInterval + 86400
+        }
+        //self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
         self.timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
     }
     
     
     @objc internal func onTapButton(sender: UIButton){
-        print("撮影！")
+        print("Stop")
         if (self.recording) {
             // stop
             myVideoOutput.stopRecording()
-            button.isEnabled = false
-            button.isHidden = true
-        } else {
-            // start recording
-            let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-            let filePath: String = path + "/test.mov"
-            let fileURL: URL = URL(fileURLWithPath: filePath)
             
-            // 録画開始
-            myVideoOutput.startRecording(to: fileURL, recordingDelegate: self)
-            button.setTitle("STOP", for: .normal)
+            let alert = UIAlertController(title: "Good Morning!", message: "We recorded you", preferredStyle: UIAlertControllerStyle.alert)
+            let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
         }
-        
-        self.recording = !self.recording
     }
     
     @objc func startAlarm() {
+        
+        // show stop button
+        button.isHidden = false
         
         // セッション開始.
         session.startRunning()
@@ -144,21 +146,31 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         myVideoOutput.startRecording(to: fileURL, recordingDelegate: self)
         button.setTitle("STOP", for: .normal)
         
+        self.recording = true
+        
         if recordDuration != 0 {
             sleep(recordDuration)
         }
         
-        // stop
-        myVideoOutput.stopRecording()
-        button.isEnabled = false
-        button.isHidden = true
+        
+        if (self.recording) {
+            
+            print("you didn't wake up")
+            
+            // stop
+            myVideoOutput.stopRecording()
+           
+            session.stopRunning()
+            self.recording = false
+            
+            let alert = UIAlertController(title: "Good Morning!", message: "You didn't wake up", preferredStyle: UIAlertControllerStyle.alert)
+            let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
     }
-    
-    
-    
-    
-    
-    
     
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
@@ -267,7 +279,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             self.button.isHidden = false
             }
             alert.addAction(action)
-            self.present(alert, animated: true, completion: nil)
+            // self.present(alert, animated: true, completion: nil)
             });
             })
         })
