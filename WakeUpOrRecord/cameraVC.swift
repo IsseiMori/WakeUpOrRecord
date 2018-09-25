@@ -19,9 +19,9 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     // record duration
     var recordDuration: UInt32!
     
-    var timer: Timer?
-    var timer2: Timer?
-    var timer3: Timer?
+    var timerStartCamera: Timer?
+    var timerStartAlarm: Timer?
+    var timerEndAlarm: Timer?
 
     // セッションの作成
     var session: AVCaptureSession!
@@ -125,10 +125,11 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         if timeInterval < 0 {
             timeInterval = timeInterval + 86400
         }
+        print(timeInterval)
         //self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
-        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startRecord), userInfo: nil, repeats: false)
-        self.timer2 = Timer.scheduledTimer(timeInterval: timeInterval - 1, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
-        self.timer3 = Timer.scheduledTimer(timeInterval: timeInterval + Double(recordDuration), target: self, selector: #selector(self.stopRecord), userInfo: nil, repeats: false)
+        self.timerStartCamera = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startRecord), userInfo: nil, repeats: false)
+        self.timerStartAlarm = Timer.scheduledTimer(timeInterval: timeInterval - 1, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
+        self.timerEndAlarm = Timer.scheduledTimer(timeInterval: timeInterval + Double(recordDuration), target: self, selector: #selector(self.stopRecord), userInfo: nil, repeats: false)
     }
     
     
@@ -186,7 +187,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         print("start record")
         
         // mp3音声(SOUND.mp3)の再生
-        playSound(name: "dog")
+        playSound(name: "watch")
         
         // start recording
         let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
@@ -332,6 +333,21 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             })
         })
     }
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        // Delete timer schedules
+        if timerStartCamera != nil {
+            timerStartCamera?.invalidate()
+        }
+        if timerStartAlarm != nil {
+            timerStartAlarm?.invalidate()
+        }
+        if timerEndAlarm != nil {
+            timerEndAlarm?.invalidate()
+        }
+    }
 
 }
 
@@ -348,6 +364,9 @@ extension cameraVC: AVAudioPlayerDelegate {
             
             // AVAudioPlayerのデリゲートをセット
             audioPlayer.delegate = self
+            
+            // repeat sound
+            audioPlayer.numberOfLoops = -1
             
             // 音声の再生
             audioPlayer.play()

@@ -17,6 +17,7 @@
 		8595FC6521583D4000966E8A /* logologo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6421583D4000966E8A /* logologo.png */; };
 		8595FC6721584C6400966E8A /* dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6621584C6400966E8A /* dog.mp3 */; };
 		8595FC6B2158D30200966E8A /* alarmSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC6A2158D30200966E8A /* alarmSettingVC.swift */; };
+		8595FC6D215AD57800966E8A /* watch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6C215AD57800966E8A /* watch.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		8595FC6421583D4000966E8A /* logologo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logologo.png; sourceTree = "<group>"; };
 		8595FC6621584C6400966E8A /* dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dog.mp3; sourceTree = "<group>"; };
 		8595FC6A2158D30200966E8A /* alarmSettingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = alarmSettingVC.swift; sourceTree = "<group>"; };
+		8595FC6C215AD57800966E8A /* watch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = watch.mp3; sourceTree = "<group>"; };
 		8952944B4A54F4A55DEBFE88 /* Pods-WakeUpOrRecord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.debug.xcconfig"; sourceTree = "<group>"; };
 		BD763AE8BBE96653A354B946 /* Pods-WakeUpOrRecord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -78,6 +80,7 @@
 		8595FC4C2158183F00966E8A /* WakeUpOrRecord */ = {
 			isa = PBXGroup;
 			children = (
+				8595FC6E215AD57D00966E8A /* sounds */,
 				8595FC6421583D4000966E8A /* logologo.png */,
 				8595FC4D2158183F00966E8A /* AppDelegate.swift */,
 				8595FC512158183F00966E8A /* Main.storyboard */,
@@ -86,10 +89,18 @@
 				8595FC5C2158184100966E8A /* Info.plist */,
 				8595FC542158183F00966E8A /* WakeUpOrRecord.xcdatamodeld */,
 				8595FC622158262E00966E8A /* cameraVC.swift */,
-				8595FC6621584C6400966E8A /* dog.mp3 */,
 				8595FC6A2158D30200966E8A /* alarmSettingVC.swift */,
 			);
 			path = WakeUpOrRecord;
+			sourceTree = "<group>";
+		};
+		8595FC6E215AD57D00966E8A /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				8595FC6621584C6400966E8A /* dog.mp3 */,
+				8595FC6C215AD57800966E8A /* watch.mp3 */,
+			);
+			path = sounds;
 			sourceTree = "<group>";
 		};
 		EBB7AE047280FC4CFA7DD578 /* Frameworks */ = {
@@ -161,6 +172,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8595FC5B2158184100966E8A /* LaunchScreen.storyboard in Resources */,
+				8595FC6D215AD57800966E8A /* watch.mp3 in Resources */,
 				8595FC6721584C6400966E8A /* dog.mp3 in Resources */,
 				8595FC582158184100966E8A /* Assets.xcassets in Resources */,
 				8595FC6521583D4000966E8A /* logologo.png in Resources */,
