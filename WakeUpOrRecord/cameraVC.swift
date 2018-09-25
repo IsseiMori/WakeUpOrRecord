@@ -21,6 +21,9 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     var timer: Timer?
 
+    // セッションの作成
+    var session: AVCaptureSession!
+    
     // 録画状態フラグ
     private var recording: Bool = false
     
@@ -40,7 +43,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
         
         // セッションの作成
-        let session = AVCaptureSession()
+        session = AVCaptureSession()
         
         // 出力先を生成
         let myImageOutput = AVCapturePhotoOutput()
@@ -76,8 +79,6 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         // Viewに追加
         self.view.layer.addSublayer(myVideoLayer!)
         
-        // セッション開始.
-        session.startRunning()
         
         // UI
         button = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
@@ -100,7 +101,8 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     func setAlarm() {
         // set timer
-        self.timer = Timer.scheduledTimer(timeInterval: alarmTime.timeIntervalSince(Date()), target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
+        // self.timer = Timer.scheduledTimer(timeInterval: alarmTime.timeIntervalSince(Date()), target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
+        self.timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
     }
     
     
@@ -126,6 +128,10 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     @objc func startAlarm() {
+        
+        // セッション開始.
+        session.startRunning()
+        
         // mp3音声(SOUND.mp3)の再生
         playSound(name: "dog")
         
