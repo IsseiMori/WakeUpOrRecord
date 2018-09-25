@@ -20,6 +20,8 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     var recordDuration: UInt32!
     
     var timer: Timer?
+    var timer2: Timer?
+    var timer3: Timer?
 
     // セッションの作成
     var session: AVCaptureSession!
@@ -37,6 +39,9 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     private var button: UIButton!
     
     var audioPlayer: AVAudioPlayer!
+    
+    // black view to turn off the screen
+    var blackView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,22 +79,36 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         // 画像を表示するレイヤーを生成
         myVideoLayer = AVCaptureVideoPreviewLayer.init(session: session)
         myVideoLayer?.frame = self.view.bounds
+        myVideoLayer.zPosition = -1
         myVideoLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         
         // Viewに追加
         self.view.layer.addSublayer(myVideoLayer!)
         
         
-        // UI
-        button = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
-        button.backgroundColor = .red
-        button.layer.masksToBounds = true
-        button.setTitle("STOP", for: .normal)
-        button.layer.cornerRadius = 20.0
-        button.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
-        button.addTarget(self, action: #selector(self.onTapButton), for: .touchUpInside)
-        button.isHidden = true
-        self.view.addSubview(button)
+        let screenTap = UITapGestureRecognizer(target: self, action: #selector(self.screenTap))
+        screenTap.numberOfTapsRequired = 1
+        self.view.isUserInteractionEnabled = true
+        self.view.addGestureRecognizer(screenTap)
+        
+        // black view to turn off the screen
+        blackView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        blackView.backgroundColor = UIColor.black
+        blackView.isHidden = true
+        blackView.isUserInteractionEnabled = true
+        self.navigationController?.view.addSubview(blackView)
+        
+        let blackScreenTap = UITapGestureRecognizer(target: self, action: #selector(self.screenTap))
+        blackScreenTap.numberOfTapsRequired = 1
+        blackView.addGestureRecognizer(blackScreenTap)
+        
+        // text label to tell tap to show/hide screen
+        let tapToHideTxt = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 20))
+        tapToHideTxt.text = "Tap to show/hide screen"
+        tapToHideTxt.sizeToFit()
+        tapToHideTxt.center.x = self.view.center.x
+        tapToHideTxt.center.y = self.view.center.y
+        self.view.addSubview(tapToHideTxt)
 
         let alert = UIAlertController(title: "Good Night", message: "We will wake you up", preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
@@ -107,13 +126,24 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             timeInterval = timeInterval + 86400
         }
         //self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
-        self.timer = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
+        self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startRecord), userInfo: nil, repeats: false)
+        self.timer2 = Timer.scheduledTimer(timeInterval: timeInterval - 1, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
+        self.timer3 = Timer.scheduledTimer(timeInterval: timeInterval + Double(recordDuration), target: self, selector: #selector(self.stopRecord), userInfo: nil, repeats: false)
+    }
+    
+    
+    // show and hide black screen
+    @objc func screenTap() {
+        blackView.isHidden = !blackView.isHidden
     }
     
     
     @objc internal func onTapButton(sender: UIButton){
         print("Stop")
         if (self.recording) {
+            
+            audioPlayer.stop()
+            
             // stop
             myVideoOutput.stopRecording()
             
@@ -127,12 +157,33 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     @objc func startAlarm() {
+        print("start alarm")
         
-        // show stop button
-        button.isHidden = false
+        // show screen
+        blackView.isHidden = true
+        
+        print("hide things")
+        
+        //startRecord()
         
         // セッション開始.
         session.startRunning()
+        
+        // add stop button
+        button = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
+        button.backgroundColor = .red
+        button.layer.masksToBounds = true
+        button.setTitle("STOP", for: .normal)
+        button.layer.cornerRadius = 20.0
+        button.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
+        button.addTarget(self, action: #selector(self.onTapButton), for: .touchUpInside)
+        self.view.addSubview(button)
+        
+    }
+    
+    @objc func startRecord() {
+        
+        print("start record")
         
         // mp3音声(SOUND.mp3)の再生
         playSound(name: "dog")
@@ -147,22 +198,19 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         button.setTitle("STOP", for: .normal)
         
         self.recording = true
-        
-        if recordDuration != 0 {
-            sleep(recordDuration)
-        }
-        
-        
+    }
+    
+    @objc func stopRecord() {
         if (self.recording) {
-            
+    
             print("you didn't wake up")
-            
+    
             // stop
             myVideoOutput.stopRecording()
-           
+    
             session.stopRunning()
             self.recording = false
-            
+    
             let alert = UIAlertController(title: "Good Morning!", message: "You didn't wake up", preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
                 self.navigationController?.popViewController(animated: true)
