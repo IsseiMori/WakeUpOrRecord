@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  WakeUpOrRecord
+
+  Created by MoriIssei on 9/26/18.
+  Copyright © 2018 IsseiMori. All rights reserved.
+*/
+
+
+// alarmSettingVC
+"setting" = "Setting";
+"alarm time" = "alarmTime";
+"record duration" = "Record Duration";
+"set alarm" = "Set Alarm";
+
+// cameraVC
+"tap to show/hide screen" = "Tap to show/hide screen";
+"good night" = "Good Night";
+"good night msg" = "We will wake you up";
+"good morning" = "Good Morning";
+"good morning msg" = "We recorded you";
+"did not wake up msg" = "You didn't wake up";

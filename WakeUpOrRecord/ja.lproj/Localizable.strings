@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  WakeUpOrRecord
+
+  Created by MoriIssei on 9/26/18.
+  Copyright © 2018 IsseiMori. All rights reserved.
+*/
+
+
+// alarmSettingVC
+"setting" = "設定";
+"alarm time" = "アラーム時間";
+"record duration" = "録画時間";
+"set alarm" = "目覚ましをセット";
+
+// cameraVC
+"tap to show/hide screen" = "タップで画面非表示";
+"good night" = "おやすみなさい";
+"good night msg" = "アラームが設定されています";
+"good morning" = "おはようございます";
+"good morning msg" = "録画しました";
+"did not wake up msg" = "時間に起きませんでした";

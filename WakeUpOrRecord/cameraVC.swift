@@ -43,6 +43,9 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     // black view to turn off the screen
     var blackView: UIView!
     
+    // label: tap to hide screen
+    var tapToHideTxt: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -103,14 +106,14 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         blackView.addGestureRecognizer(blackScreenTap)
         
         // text label to tell tap to show/hide screen
-        let tapToHideTxt = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 20))
-        tapToHideTxt.text = "Tap to show/hide screen"
+        tapToHideTxt = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 20))
+        tapToHideTxt.text = NSLocalizedString("tap to show/hide screen", comment: "")
         tapToHideTxt.sizeToFit()
         tapToHideTxt.center.x = self.view.center.x
         tapToHideTxt.center.y = self.view.center.y
         self.view.addSubview(tapToHideTxt)
 
-        let alert = UIAlertController(title: "Good Night", message: "We will wake you up", preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: NSLocalizedString("good night", comment: ""), message: NSLocalizedString("good night msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
             self.setAlarm()
         }
@@ -126,7 +129,6 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             timeInterval = timeInterval + 86400
         }
         print(timeInterval)
-        //self.timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
         self.timerStartCamera = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startRecord), userInfo: nil, repeats: false)
         self.timerStartAlarm = Timer.scheduledTimer(timeInterval: timeInterval - 1, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
         self.timerEndAlarm = Timer.scheduledTimer(timeInterval: timeInterval + Double(recordDuration), target: self, selector: #selector(self.stopRecord), userInfo: nil, repeats: false)
@@ -148,7 +150,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             // stop
             myVideoOutput.stopRecording()
             
-            let alert = UIAlertController(title: "Good Morning!", message: "We recorded you", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: NSLocalizedString("good morning", comment: ""), message: NSLocalizedString("good morning msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
                 self.navigationController?.popViewController(animated: true)
             }
@@ -162,12 +164,14 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
         // show screen
         blackView.isHidden = true
+        tapToHideTxt.isHidden = true
+        
         
         print("hide things")
         
-        //startRecord()
+        startRecord()
         
-        // セッション開始.
+        // start camera session
         session.startRunning()
         
         // add stop button
@@ -186,15 +190,15 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
         print("start record")
         
-        // mp3音声(SOUND.mp3)の再生
+        //play .mp3 sound
         playSound(name: "watch")
         
-        // start recording
+        // set up file path
         let path: String = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let filePath: String = path + "/test.mov"
         let fileURL: URL = URL(fileURLWithPath: filePath)
         
-        // 録画開始
+        // Start recording
         myVideoOutput.startRecording(to: fileURL, recordingDelegate: self)
         button.setTitle("STOP", for: .normal)
         
@@ -212,7 +216,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             session.stopRunning()
             self.recording = false
     
-            let alert = UIAlertController(title: "Good Morning!", message: "You didn't wake up", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: NSLocalizedString("good morning", comment: ""), message: NSLocalizedString("did not wake up msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
                 self.navigationController?.popViewController(animated: true)
             }
@@ -354,21 +358,21 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
 extension cameraVC: AVAudioPlayerDelegate {
     func playSound(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
-            print("音源ファイルが見つかりません")
+            print("No sound file found")
             return
         }
         
         do {
-            // AVAudioPlayerのインスタンス化
+            // Instantiate AVAudioPlayer
             audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             
-            // AVAudioPlayerのデリゲートをセット
+            // Set AVAudioPlayer delegate
             audioPlayer.delegate = self
             
             // repeat sound
             audioPlayer.numberOfLoops = -1
             
-            // 音声の再生
+            // play sound
             audioPlayer.play()
         } catch {
         }

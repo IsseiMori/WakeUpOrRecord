@@ -18,9 +18,9 @@ class alarmSettingVC: FormViewController {
         super.viewDidLoad()
 
         
-        form +++ Section("Setting")
+        form +++ Section(NSLocalizedString("setting", comment: ""))
             <<< TimeRow("alarmTime") {
-                $0.title = "Alarm Time"
+                $0.title = NSLocalizedString("alarm time", comment: "")
                 
                 let formatter = DateFormatter()
                 formatter.dateFormat = "HH:mm"
@@ -34,7 +34,7 @@ class alarmSettingVC: FormViewController {
                     print(row.value!.timeIntervalSince(NSDate() as Date))
                 })
             <<< PickerInlineRow<String>("recordDuration"){
-                $0.title = "Record Duration"
+                $0.title = NSLocalizedString("record duration", comment: "")
                 $0.options = ["5s", "30s", "1m", "5m"]
                 $0.value = $0.options[0]
                 }.onChange({ (row) in
@@ -43,7 +43,7 @@ class alarmSettingVC: FormViewController {
         
         form +++ Section()
             <<< ButtonRow() {
-                $0.title = "Set Alarm"
+                $0.title = NSLocalizedString("set alarm", comment: "")
                 }.onCellSelection({ (cell, row) in
                     
                     let cameraVC = self.storyboard?.instantiateViewController(withIdentifier: "cameraVC") as! cameraVC
