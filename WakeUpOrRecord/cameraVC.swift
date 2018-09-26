@@ -44,11 +44,18 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     // black view to turn off the screen
     var blackView: UIView!
     
+    // white view to hide camera preview
+    var whiteView: UIView!
+    
     // label: tap to hide screen
     var tapToHideTxt: UILabel!
     
     // clock label
     var clockLbl: UILabel!
+    
+    // camera preview button
+    var previewBtn: UIButton!
+    var previewOn = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,6 +106,12 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         // Viewに追加
         self.view.layer.addSublayer(myVideoLayer!)
         
+        let width = self.view.frame.size.width
+        let height = self.view.frame.size.height
+        
+        whiteView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        whiteView.backgroundColor = UIColor.white
+        self.view.addSubview(whiteView)
         
         let screenTap = UITapGestureRecognizer(target: self, action: #selector(self.screenTap))
         screenTap.numberOfTapsRequired = 1
@@ -116,10 +129,6 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         blackScreenTap.numberOfTapsRequired = 1
         blackView.addGestureRecognizer(blackScreenTap)
         
-        
-        let width = self.view.frame.width
-        
-        
         // clock label
         clockLbl = UILabel(frame: CGRect(x: width * 0.1, y: 0, width: width * 0.8, height: 100))
         let date = NSDate()
@@ -135,6 +144,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         /*clockLbl.numberOfLines = 1
         clockLbl.adjustsFontSizeToFitWidth = true
         clockLbl.minimumScaleFactor = 1
+        clockLbl.lineBreakMode = NSLineBreakMode.byClipping
         clockLbl.backgroundColor = .red
         clockLbl.setNeedsLayout()*/
         clockLbl.sizeToFit()
@@ -149,7 +159,19 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         tapToHideTxt.center.x = self.view.center.x
         self.view.addSubview(tapToHideTxt)
         
+        // camera preview button
+        previewBtn = UIButton(frame: CGRect(x: 10, y: self.view.frame.size.height - 50, width: width * 0.3, height: 40))
+        previewBtn.setTitle(NSLocalizedString("preview", comment: ""), for: UIControlState.normal)
+        previewBtn.backgroundColor = UIColor.gray
+        previewBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
+        previewBtn.layer.cornerRadius = 5
+        previewBtn.clipsToBounds = true
+        self.view.addSubview(previewBtn)
         
+        // camera preview button tap
+        let previewBtnTap = UITapGestureRecognizer(target: self, action: #selector(self.previewBtnTap))
+        previewBtnTap.numberOfTapsRequired = 1
+        previewBtn.addGestureRecognizer(previewBtnTap)
 
         let alert = UIAlertController(title: NSLocalizedString("good night", comment: ""), message: NSLocalizedString("good night msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
@@ -184,6 +206,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         print("start alarm")
         
         // show screen
+        whiteView.isHidden = true
         blackView.isHidden = true
         tapToHideTxt.isHidden = true
         clockLbl.isHidden = true
@@ -270,6 +293,21 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         clockLbl.center = self.view.center
     }
     
+    @objc func previewBtnTap(sender: UIButton) {
+        if previewOn {
+            print("turn off preview")
+            session.stopRunning()
+            whiteView.isHidden = false
+            previewBtn.backgroundColor = UIColor.gray
+            myVideoLayer = nil
+        } else {
+            print("turn on preview")
+            session.startRunning()
+            whiteView.isHidden = true
+            previewBtn.backgroundColor = UIColor.red
+        }
+        previewOn = !previewOn
+    }
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
         
