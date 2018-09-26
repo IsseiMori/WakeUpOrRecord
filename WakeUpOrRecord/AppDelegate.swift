@@ -18,12 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        // Initialize Twitter API
+        /*
+         // Initialize Twitter API
         TWTRTwitter.sharedInstance().start(withConsumerKey: "0JjXDBwrkf7wGhEo9csk38qH0", consumerSecret: "Vy3VBfsPwoSO23bwB0fmyHweSabNgFeZzXko4e1PFIxl1lN60v")
+         */
         
         return true
     }
     
+    /*
     // For Twitter API
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
@@ -32,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return false
-    }
+    }*/
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
