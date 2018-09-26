@@ -26,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		35BD91D92C834F5908159FB0 /* Pods_WakeUpOrRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeUpOrRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8532F220215C410D00094498 /* WakeUpOrRecord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WakeUpOrRecord-Bridging-Header.h"; sourceTree = "<group>"; };
 		8595FC4A2158183F00966E8A /* WakeUpOrRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUpOrRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8595FC4D2158183F00966E8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8595FC522158183F00966E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 				8595FC4B2158183F00966E8A /* Products */,
 				40EF8B4D7991F7402FA02936 /* Pods */,
 				EBB7AE047280FC4CFA7DD578 /* Frameworks */,
+				8532F220215C410D00094498 /* WakeUpOrRecord-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +146,7 @@
 				8595FC472158183F00966E8A /* Frameworks */,
 				8595FC482158183F00966E8A /* Resources */,
 				771F79E36489BC15A7F395A1 /* [CP] Embed Pods Frameworks */,
+				D5A72EC85471346A4FB0C2CE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -166,6 +169,7 @@
 				TargetAttributes = {
 					8595FC492158183F00966E8A = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -235,14 +239,36 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D5A72EC85471346A4FB0C2CE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-resources.sh",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -411,6 +437,7 @@
 			baseConfigurationReference = 8952944B4A54F4A55DEBFE88 /* Pods-WakeUpOrRecord.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 277D2PK394;
 				INFOPLIST_FILE = WakeUpOrRecord/Info.plist;
@@ -420,6 +447,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.issei.WakeUpOrRecord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WakeUpOrRecord-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -430,6 +459,7 @@
 			baseConfigurationReference = BD763AE8BBE96653A354B946 /* Pods-WakeUpOrRecord.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 277D2PK394;
 				INFOPLIST_FILE = WakeUpOrRecord/Info.plist;
@@ -439,6 +469,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.issei.WakeUpOrRecord;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "WakeUpOrRecord-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

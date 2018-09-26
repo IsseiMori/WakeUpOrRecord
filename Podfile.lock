@@ -1,16 +1,24 @@
 PODS:
   - Eureka (4.1.1)
+  - TwitterCore (3.2.0)
+  - TwitterKit (3.4.0):
+    - TwitterCore (>= 3.1.0)
 
 DEPENDENCIES:
   - Eureka (< 4.2.0)
+  - TwitterKit (= 3.4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Eureka
+    - TwitterCore
+    - TwitterKit
 
 SPEC CHECKSUMS:
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
+  TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
+  TwitterKit: bc7bd086b9b724a1d888745a054e1d0b1ecc4f3f
 
-PODFILE CHECKSUM: a1c35e6fce0ed55817faa53e56119c55c34c00c2
+PODFILE CHECKSUM: e874dcf8aba7555ebc0b463fc563e8913b9a95d1
 
 COCOAPODS: 1.5.3

@@ -17,7 +17,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Initialize Twitter API
+        TWTRTwitter.sharedInstance().start(withConsumerKey: "0JjXDBwrkf7wGhEo9csk38qH0", consumerSecret: "Vy3VBfsPwoSO23bwB0fmyHweSabNgFeZzXko4e1PFIxl1lN60v")
+        
         return true
+    }
+    
+    // For Twitter API
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if TWTRTwitter.sharedInstance().application(app, open: url, options: options) {
+            return true
+        }
+        
+        return false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

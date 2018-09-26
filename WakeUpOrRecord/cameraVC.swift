@@ -176,6 +176,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         let alert = UIAlertController(title: NSLocalizedString("good night", comment: ""), message: NSLocalizedString("good night msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
             self.setAlarm()
+            self.shareOnTwitter()
         }
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
@@ -307,6 +308,15 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             previewBtn.backgroundColor = UIColor.red
         }
         previewOn = !previewOn
+    }
+    
+    
+    func shareOnTwitter() {
+        // show tweet view
+        let composer = TWTRComposer()
+        composer.setText("I didn't wake up")
+        composer.show(from: self) { (result) in
+        }
     }
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
