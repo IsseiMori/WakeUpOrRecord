@@ -12,6 +12,7 @@
 "alarm time" = "alarmTime";
 "record duration" = "Record Duration";
 "set alarm" = "Set Alarm";
+"app name" = "Wake Up Challenge";
 
 // cameraVC
 "tap to show/hide screen" = "Tap to show/hide screen";

@@ -16,7 +16,9 @@ class alarmSettingVC: FormViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // Set nav title
+        self.navigationItem.title = NSLocalizedString("app name", comment: "")
         
         form +++ Section(NSLocalizedString("setting", comment: ""))
             <<< TimeRow("alarmTime") {

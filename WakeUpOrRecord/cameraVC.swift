@@ -22,6 +22,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     var timerStartCamera: Timer?
     var timerStartAlarm: Timer?
     var timerEndAlarm: Timer?
+    var timerShowTime: Timer?
 
     // セッションの作成
     var session: AVCaptureSession!
@@ -46,9 +47,19 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     // label: tap to hide screen
     var tapToHideTxt: UILabel!
     
+    // clock label
+    var clockLbl: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Set nav title
+        self.navigationItem.title = NSLocalizedString("app name", comment: "")
+        
+        // new back button
+        self.navigationItem.hidesBackButton = true
+        let backBtn = UIBarButtonItem(image: UIImage(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.back))
+        self.navigationItem.leftBarButtonItem = backBtn
         
         // セッションの作成
         session = AVCaptureSession()
@@ -105,13 +116,40 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         blackScreenTap.numberOfTapsRequired = 1
         blackView.addGestureRecognizer(blackScreenTap)
         
+        
+        let width = self.view.frame.width
+        
+        
+        // clock label
+        clockLbl = UILabel(frame: CGRect(x: width * 0.1, y: 0, width: width * 0.8, height: 100))
+        let date = NSDate()
+        let calendar = NSCalendar.current
+        let hour = "\(calendar.component(.hour, from: date as Date))"
+        var minute = "\(calendar.component(.minute, from: date as Date))"
+        // add 0 to minute if one digit
+        if minute.count <= 1 {
+            minute = "0\(minute)"
+        }
+        clockLbl.text = hour + " : " + minute
+        clockLbl.font = clockLbl.font.withSize(width / 5)
+        /*clockLbl.numberOfLines = 1
+        clockLbl.adjustsFontSizeToFitWidth = true
+        clockLbl.minimumScaleFactor = 1
+        clockLbl.backgroundColor = .red
+        clockLbl.setNeedsLayout()*/
+        clockLbl.sizeToFit()
+        clockLbl.center = self.view.center
+        self.view.addSubview(clockLbl)
+        
+        
         // text label to tell tap to show/hide screen
-        tapToHideTxt = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width * 0.8, height: 20))
+        tapToHideTxt = UILabel(frame: CGRect(x: 0, y: clockLbl.frame.origin.y + clockLbl.frame.size.height + 20, width: self.view.frame.size.width * 0.8, height: 20))
         tapToHideTxt.text = NSLocalizedString("tap to show/hide screen", comment: "")
         tapToHideTxt.sizeToFit()
         tapToHideTxt.center.x = self.view.center.x
-        tapToHideTxt.center.y = self.view.center.y
         self.view.addSubview(tapToHideTxt)
+        
+        
 
         let alert = UIAlertController(title: NSLocalizedString("good night", comment: ""), message: NSLocalizedString("good night msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
         let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
@@ -132,6 +170,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         self.timerStartCamera = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startRecord), userInfo: nil, repeats: false)
         self.timerStartAlarm = Timer.scheduledTimer(timeInterval: timeInterval - 1, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
         self.timerEndAlarm = Timer.scheduledTimer(timeInterval: timeInterval + Double(recordDuration), target: self, selector: #selector(self.stopRecord), userInfo: nil, repeats: false)
+        self.timerShowTime = Timer.scheduledTimer(timeInterval: 60, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true)
     }
     
     
@@ -141,35 +180,17 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     }
     
     
-    @objc internal func onTapButton(sender: UIButton){
-        print("Stop")
-        if (self.recording) {
-            
-            audioPlayer.stop()
-            
-            // stop
-            myVideoOutput.stopRecording()
-            
-            let alert = UIAlertController(title: NSLocalizedString("good morning", comment: ""), message: NSLocalizedString("good morning msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
-            let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
-                self.navigationController?.popViewController(animated: true)
-            }
-            alert.addAction(ok)
-            present(alert, animated: true, completion: nil)
-        }
-    }
-    
     @objc func startAlarm() {
         print("start alarm")
         
         // show screen
         blackView.isHidden = true
         tapToHideTxt.isHidden = true
+        clockLbl.isHidden = true
         
         
         print("hide things")
         
-        startRecord()
         
         // start camera session
         session.startRunning()
@@ -183,7 +204,6 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         button.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
         button.addTarget(self, action: #selector(self.onTapButton), for: .touchUpInside)
         self.view.addSubview(button)
-        
     }
     
     @objc func startRecord() {
@@ -200,7 +220,6 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
         // Start recording
         myVideoOutput.startRecording(to: fileURL, recordingDelegate: self)
-        button.setTitle("STOP", for: .normal)
         
         self.recording = true
     }
@@ -213,7 +232,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             // stop
             myVideoOutput.stopRecording()
     
-            session.stopRunning()
+            // session.stopRunning()
             self.recording = false
     
             let alert = UIAlertController(title: NSLocalizedString("good morning", comment: ""), message: NSLocalizedString("did not wake up msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
@@ -225,8 +244,36 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         }
     }
     
+    @objc internal func onTapButton(sender: UIButton){
+        print("stop button")
+        if (self.recording) {
+            
+            audioPlayer.stop()
+            
+            // stop
+            myVideoOutput.stopRecording()
+            
+            let alert = UIAlertController(title: NSLocalizedString("good morning", comment: ""), message: NSLocalizedString("good morning msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
+            let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
+                self.navigationController?.popViewController(animated: true)
+            }
+            alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func updateTime() {
+        let date = NSDate()
+        let calendar = NSCalendar.current
+        clockLbl.text = "\(calendar.component(.hour, from: date as Date)) : \(calendar.component(.minute, from: date as Date))"
+        clockLbl.sizeToFit()
+        clockLbl.center = self.view.center
+    }
+    
     
     func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        
+        print("export video")
         
         // 動画URLからアセットを生成
         let videoAsset: AVURLAsset = AVURLAsset(url: outputFileURL, options: nil)
@@ -320,16 +367,15 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             var message = ""
             if success {
             message = "保存しました"
+                print("saved")
             } else {
             message = "保存に失敗しました"
+                print(error!)
             }
             // アラートを表示
             DispatchQueue.main.async(execute: {
             let alert = UIAlertController.init(title: "", message: message, preferredStyle: UIAlertControllerStyle.alert)
             let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default){ (action: UIAlertAction) in
-            self.button.setTitle("START", for: .normal)
-            self.button.isEnabled = true
-            self.button.isHidden = false
             }
             alert.addAction(action)
             // self.present(alert, animated: true, completion: nil)
@@ -351,6 +397,12 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         if timerEndAlarm != nil {
             timerEndAlarm?.invalidate()
         }
+    }
+    
+    @objc func back(sender: UIBarButtonItem) {
+        
+        // push back
+        self.navigationController?.popViewController(animated: true)
     }
 
 }

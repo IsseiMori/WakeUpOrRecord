@@ -19,6 +19,9 @@
 		8595FC6B2158D30200966E8A /* alarmSettingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC6A2158D30200966E8A /* alarmSettingVC.swift */; };
 		8595FC6D215AD57800966E8A /* watch.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC6C215AD57800966E8A /* watch.mp3 */; };
 		8595FC71215B68FF00966E8A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC73215B68FF00966E8A /* Localizable.strings */; };
+		8595FC79215B79FF00966E8A /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC76215B79FE00966E8A /* back@3x.png */; };
+		8595FC7A215B79FF00966E8A /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC77215B79FE00966E8A /* back.png */; };
+		8595FC7B215B79FF00966E8A /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC78215B79FE00966E8A /* back@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		8595FC6C215AD57800966E8A /* watch.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = watch.mp3; sourceTree = "<group>"; };
 		8595FC72215B68FF00966E8A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8595FC74215B693A00966E8A /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8595FC76215B79FE00966E8A /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@3x.png"; sourceTree = "<group>"; };
+		8595FC77215B79FE00966E8A /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
+		8595FC78215B79FE00966E8A /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		8952944B4A54F4A55DEBFE88 /* Pods-WakeUpOrRecord.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.debug.xcconfig"; sourceTree = "<group>"; };
 		BD763AE8BBE96653A354B946 /* Pods-WakeUpOrRecord.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpOrRecord.release.xcconfig"; path = "Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -83,6 +89,7 @@
 		8595FC4C2158183F00966E8A /* WakeUpOrRecord */ = {
 			isa = PBXGroup;
 			children = (
+				8595FC75215B79E100966E8A /* button items */,
 				8595FC6E215AD57D00966E8A /* sounds */,
 				8595FC6421583D4000966E8A /* logologo.png */,
 				8595FC4D2158183F00966E8A /* AppDelegate.swift */,
@@ -105,6 +112,16 @@
 				8595FC6C215AD57800966E8A /* watch.mp3 */,
 			);
 			path = sounds;
+			sourceTree = "<group>";
+		};
+		8595FC75215B79E100966E8A /* button items */ = {
+			isa = PBXGroup;
+			children = (
+				8595FC77215B79FE00966E8A /* back.png */,
+				8595FC78215B79FE00966E8A /* back@2x.png */,
+				8595FC76215B79FE00966E8A /* back@3x.png */,
+			);
+			path = "button items";
 			sourceTree = "<group>";
 		};
 		EBB7AE047280FC4CFA7DD578 /* Frameworks */ = {
@@ -178,9 +195,12 @@
 			files = (
 				8595FC5B2158184100966E8A /* LaunchScreen.storyboard in Resources */,
 				8595FC6D215AD57800966E8A /* watch.mp3 in Resources */,
+				8595FC7A215B79FF00966E8A /* back.png in Resources */,
+				8595FC79215B79FF00966E8A /* back@3x.png in Resources */,
 				8595FC6721584C6400966E8A /* dog.mp3 in Resources */,
 				8595FC71215B68FF00966E8A /* Localizable.strings in Resources */,
 				8595FC582158184100966E8A /* Assets.xcassets in Resources */,
+				8595FC7B215B79FF00966E8A /* back@2x.png in Resources */,
 				8595FC6521583D4000966E8A /* logologo.png in Resources */,
 				8595FC532158183F00966E8A /* Main.storyboard in Resources */,
 			);
