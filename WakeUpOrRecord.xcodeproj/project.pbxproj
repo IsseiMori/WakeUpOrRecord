@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		779CD127E92DE54B651E8AAE /* Pods_WakeUpOrRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35BD91D92C834F5908159FB0 /* Pods_WakeUpOrRecord.framework */; };
+		8532F226215C80C400094498 /* tutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532F225215C80C400094498 /* tutorialVC.swift */; };
 		8595FC4E2158183F00966E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC4D2158183F00966E8A /* AppDelegate.swift */; };
 		8595FC532158183F00966E8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC512158183F00966E8A /* Main.storyboard */; };
 		8595FC562158183F00966E8A /* WakeUpOrRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC542158183F00966E8A /* WakeUpOrRecord.xcdatamodeld */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		35BD91D92C834F5908159FB0 /* Pods_WakeUpOrRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeUpOrRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8532F220215C410D00094498 /* WakeUpOrRecord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WakeUpOrRecord-Bridging-Header.h"; sourceTree = "<group>"; };
+		8532F225215C80C400094498 /* tutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorialVC.swift; sourceTree = "<group>"; };
 		8595FC4A2158183F00966E8A /* WakeUpOrRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUpOrRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8595FC4D2158183F00966E8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8595FC522158183F00966E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				8595FC622158262E00966E8A /* cameraVC.swift */,
 				8595FC6A2158D30200966E8A /* alarmSettingVC.swift */,
 				8595FC73215B68FF00966E8A /* Localizable.strings */,
+				8532F225215C80C400094498 /* tutorialVC.swift */,
 			);
 			path = WakeUpOrRecord;
 			sourceTree = "<group>";
@@ -283,6 +286,7 @@
 				8595FC632158262E00966E8A /* cameraVC.swift in Sources */,
 				8595FC562158183F00966E8A /* WakeUpOrRecord.xcdatamodeld in Sources */,
 				8595FC6B2158D30200966E8A /* alarmSettingVC.swift in Sources */,
+				8532F226215C80C400094498 /* tutorialVC.swift in Sources */,
 				8595FC4E2158183F00966E8A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

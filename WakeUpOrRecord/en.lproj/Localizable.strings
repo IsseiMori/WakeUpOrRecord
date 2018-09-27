@@ -22,3 +22,13 @@
 "good morning msg" = "We recorded you";
 "did not wake up msg" = "You didn't wake up";
 "preview" = "Preview";
+
+
+// tutorialVC
+"tutorial page 1" = "Place your phone, front camera facing you. (You can check the view with preview button)";
+"tutorial page 2" = "Tap to turn off the screen and save battery";
+"tutorial page 3" = "The app needs to be open when the alarm rings, or alarm and recording will not start. Set Auto-Lock to Never from Setting -> Display & Brightness -> Auto-Lock -> Never";
+"tutorial page 4" = "tutorial page 4";
+"tutorial page 5" = "tutorial page 5";
+"end tutorial" = "End Tutorial";
+

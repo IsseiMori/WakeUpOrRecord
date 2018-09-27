@@ -17,6 +17,19 @@ class alarmSettingVC: FormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // show tutorial only first time
+        if UserDefaults.standard.value(forKey: "C_NSUSERDEFAULT_FIRST_TIME") == nil {
+            let tutorialVC = self.storyboard?.instantiateViewController(withIdentifier: "tutorialVC") as! tutorialVC
+            self.navigationController?.pushViewController(tutorialVC, animated: true)
+            
+            // check as first time done
+            UserDefaults.standard.set(true, forKey: "C_NSUSERDEFAULT_FIRST_TIME")
+        }
+        
+        let tutorialBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(self.goTutorial))
+            // UIBarButtonItem(image: UIImage(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.back))
+        self.navigationItem.rightBarButtonItem = tutorialBtn
+        
         // Set nav title
         self.navigationItem.title = NSLocalizedString("app name", comment: "")
         
@@ -60,6 +73,11 @@ class alarmSettingVC: FormViewController {
                     
                     self.navigationController?.pushViewController(cameraVC, animated: true)
                 })
+    }
+    
+    @objc func goTutorial(sender: UIButton) {
+        let tutorialVC = self.storyboard?.instantiateViewController(withIdentifier: "tutorialVC") as! tutorialVC
+        self.navigationController?.pushViewController(tutorialVC, animated: true)
     }
 
 

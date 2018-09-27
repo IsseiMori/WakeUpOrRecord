@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4XW-LU-5re">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="GdK-aM-f97">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -23,7 +23,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lCd-jT-CiY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2504.8000000000002" y="1011.544227886057"/>
+            <point key="canvasLocation" x="3327" y="1012"/>
         </scene>
         <!--Alarm SettingVC-->
         <scene sceneID="ZHc-7P-NXU">
@@ -39,25 +39,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KHq-mV-k9w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1376.8" y="1011.544227886057"/>
+            <point key="canvasLocation" x="2396" y="1012"/>
+        </scene>
+        <!--TutorialVC-->
+        <scene sceneID="ZYP-va-1wn">
+            <objects>
+                <viewController storyboardIdentifier="tutorialVC" id="hbo-mC-JYX" customClass="tutorialVC" customModule="WakeUpOrRecord" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rvg-X7-VwE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="0Cy-RT-U9F"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="mTi-xr-I5C"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TIM-wp-9ru" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2396" y="1800"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="fL5-EO-fqW">
+        <scene sceneID="iNY-zY-5mt">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4XW-LU-5re" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GdK-aM-f97" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="z9v-Ap-LBQ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Eqh-H5-s9S">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="KWl-AH-R76" kind="relationship" relationship="rootViewController" id="Tym-HX-sED"/>
+                        <segue destination="KWl-AH-R76" kind="relationship" relationship="rootViewController" id="RkM-p0-MFJ"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="QSm-tk-hfL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ehs-5c-oxh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="437.60000000000002" y="1011.544227886057"/>
+            <point key="canvasLocation" x="1457" y="1012"/>
         </scene>
     </scenes>
 </document>
