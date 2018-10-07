@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		779CD127E92DE54B651E8AAE /* Pods_WakeUpOrRecord.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35BD91D92C834F5908159FB0 /* Pods_WakeUpOrRecord.framework */; };
 		8532F226215C80C400094498 /* tutorialVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532F225215C80C400094498 /* tutorialVC.swift */; };
+		8532F22B216A93AF00094498 /* tutorial1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8532F227216A93AE00094498 /* tutorial1.png */; };
+		8532F22C216A93AF00094498 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8532F228216A93AE00094498 /* tutorial2.png */; };
+		8532F22D216A93AF00094498 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8532F229216A93AF00094498 /* tutorial3.png */; };
+		8532F22E216A93AF00094498 /* tutorial4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8532F22A216A93AF00094498 /* tutorial4.png */; };
 		8595FC4E2158183F00966E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC4D2158183F00966E8A /* AppDelegate.swift */; };
 		8595FC532158183F00966E8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC512158183F00966E8A /* Main.storyboard */; };
 		8595FC562158183F00966E8A /* WakeUpOrRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC542158183F00966E8A /* WakeUpOrRecord.xcdatamodeld */; };
@@ -29,6 +33,10 @@
 		35BD91D92C834F5908159FB0 /* Pods_WakeUpOrRecord.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeUpOrRecord.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8532F220215C410D00094498 /* WakeUpOrRecord-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WakeUpOrRecord-Bridging-Header.h"; sourceTree = "<group>"; };
 		8532F225215C80C400094498 /* tutorialVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tutorialVC.swift; sourceTree = "<group>"; };
+		8532F227216A93AE00094498 /* tutorial1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial1.png; sourceTree = "<group>"; };
+		8532F228216A93AE00094498 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
+		8532F229216A93AF00094498 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3.png; sourceTree = "<group>"; };
+		8532F22A216A93AF00094498 /* tutorial4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial4.png; sourceTree = "<group>"; };
 		8595FC4A2158183F00966E8A /* WakeUpOrRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUpOrRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8595FC4D2158183F00966E8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8595FC522158183F00966E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -71,6 +79,17 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8532F22F216A93B400094498 /* tutorial images */ = {
+			isa = PBXGroup;
+			children = (
+				8532F227216A93AE00094498 /* tutorial1.png */,
+				8532F228216A93AE00094498 /* tutorial2.png */,
+				8532F229216A93AF00094498 /* tutorial3.png */,
+				8532F22A216A93AF00094498 /* tutorial4.png */,
+			);
+			path = "tutorial images";
+			sourceTree = "<group>";
+		};
 		8595FC412158183F00966E8A = {
 			isa = PBXGroup;
 			children = (
@@ -93,6 +112,7 @@
 		8595FC4C2158183F00966E8A /* WakeUpOrRecord */ = {
 			isa = PBXGroup;
 			children = (
+				8532F22F216A93B400094498 /* tutorial images */,
 				8595FC75215B79E100966E8A /* button items */,
 				8595FC6E215AD57D00966E8A /* sounds */,
 				8595FC6421583D4000966E8A /* logologo.png */,
@@ -149,7 +169,6 @@
 				8595FC472158183F00966E8A /* Frameworks */,
 				8595FC482158183F00966E8A /* Resources */,
 				771F79E36489BC15A7F395A1 /* [CP] Embed Pods Frameworks */,
-				D5A72EC85471346A4FB0C2CE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -202,10 +221,14 @@
 			files = (
 				8595FC5B2158184100966E8A /* LaunchScreen.storyboard in Resources */,
 				8595FC6D215AD57800966E8A /* watch.mp3 in Resources */,
+				8532F22E216A93AF00094498 /* tutorial4.png in Resources */,
+				8532F22D216A93AF00094498 /* tutorial3.png in Resources */,
 				8595FC7A215B79FF00966E8A /* back.png in Resources */,
 				8595FC79215B79FF00966E8A /* back@3x.png in Resources */,
 				8595FC6721584C6400966E8A /* dog.mp3 in Resources */,
 				8595FC71215B68FF00966E8A /* Localizable.strings in Resources */,
+				8532F22C216A93AF00094498 /* tutorial2.png in Resources */,
+				8532F22B216A93AF00094498 /* tutorial1.png in Resources */,
 				8595FC582158184100966E8A /* Assets.xcassets in Resources */,
 				8595FC7B215B79FF00966E8A /* back@2x.png in Resources */,
 				8595FC6521583D4000966E8A /* logologo.png in Resources */,
@@ -242,38 +265,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftGifOrigin/SwiftGifOrigin.framework",
-				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftGifOrigin.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D5A72EC85471346A4FB0C2CE /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-resources.sh",
-				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WakeUpOrRecord/Pods-WakeUpOrRecord-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */

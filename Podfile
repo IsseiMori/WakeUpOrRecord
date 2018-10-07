@@ -7,6 +7,5 @@ target 'WakeUpOrRecord' do
 
   # Pods for WakeUpOrRecord
   pod 'Eureka','<4.2.0'
-  pod 'TwitterKit', '3.4.0'
 
 end

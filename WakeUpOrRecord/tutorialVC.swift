@@ -12,7 +12,7 @@ class tutorialVC: UIViewController, UIScrollViewDelegate {
 
     var scrollView: UIScrollView!
     var pageControll: UIPageControl!
-    let pageNum = 3
+    let pageNum = 4
     
     let pageColors:[Int:UIColor] = [1:UIColor.red,2:UIColor.yellow,3:UIColor.blue,4:UIColor.green]
     let pageLbls:[Int:String] = [1:NSLocalizedString("tutorial page 1", comment: ""),
@@ -20,6 +20,11 @@ class tutorialVC: UIViewController, UIScrollViewDelegate {
                                  3:NSLocalizedString("tutorial page 3", comment: ""),
                                  4:NSLocalizedString("tutorial page 4", comment: ""),
                                  5:NSLocalizedString("tutorial page 5", comment: "")]
+    
+    let images:[Int:String] = [1:"tutorial1.png",
+                               2:"tutorial2.png",
+                               3:"tutorial3.png",
+                               4:"tutorial4.png"]
     
     var button: UIButton!
     
@@ -55,11 +60,18 @@ class tutorialVC: UIViewController, UIScrollViewDelegate {
         
         for p in 1...pageNum {
             let v = UIView(frame: CGRect(x: self.view.bounds.width * CGFloat(p-1), y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-            v.backgroundColor = UIColor.white
+            v.backgroundColor = UIColor(red: 99.0 / 255.0, green: 188.0 / 255.0, blue: 210.0 / 255.0, alpha: 1) // #63BCD2
+            
+            let image = UIImage(named: images[p]!)
+            let imageView = UIImageView(image: image!)
+            imageView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.8, height: self.view.bounds.width * 0.8)
+            imageView.center.x = self.view.bounds.width / 2
+            imageView.center.y = self.view.bounds.height / 2
+            v.addSubview(imageView)
             
             let textLbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.8, height: 100))
             textLbl.center.x = self.view.bounds.width / 2
-            textLbl.center.y = self.view.bounds.height / 2
+            textLbl.center.y = self.view.bounds.height / 2 + textLbl.frame.size.height
             textLbl.textAlignment = .center
             textLbl.textColor = .gray
             textLbl.numberOfLines = 5
