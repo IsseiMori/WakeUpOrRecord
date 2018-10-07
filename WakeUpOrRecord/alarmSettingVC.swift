@@ -27,9 +27,8 @@ class alarmSettingVC: FormViewController {
             UserDefaults.standard.set(true, forKey: "C_NSUSERDEFAULT_FIRST_TIME")
         }
         
-        let tutorialBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.action, target: self, action: #selector(self.goTutorial))
-            // UIBarButtonItem(image: UIImage(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.back))
-        self.navigationItem.rightBarButtonItem = tutorialBtn
+        let infoBtn = UIBarButtonItem(image: UIImage(named: "infoIcon"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.goTutorial))
+        self.navigationItem.rightBarButtonItem = infoBtn
         
         // Set nav title
         self.navigationItem.title = NSLocalizedString("app name", comment: "")

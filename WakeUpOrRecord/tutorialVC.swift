@@ -60,13 +60,13 @@ class tutorialVC: UIViewController, UIScrollViewDelegate {
         
         for p in 1...pageNum {
             let v = UIView(frame: CGRect(x: self.view.bounds.width * CGFloat(p-1), y: 0, width: self.view.bounds.width, height: self.view.bounds.height))
-            v.backgroundColor = UIColor(red: 99.0 / 255.0, green: 188.0 / 255.0, blue: 210.0 / 255.0, alpha: 1) // #63BCD2
+            v.backgroundColor = UIColor.white
             
             let image = UIImage(named: images[p]!)
             let imageView = UIImageView(image: image!)
             imageView.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.8, height: self.view.bounds.width * 0.8)
             imageView.center.x = self.view.bounds.width / 2
-            imageView.center.y = self.view.bounds.height / 2
+            imageView.center.y = self.view.bounds.height / 2 - imageView.frame.size.height / 2
             v.addSubview(imageView)
             
             let textLbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width * 0.8, height: 100))

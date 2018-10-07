@@ -9,6 +9,8 @@
 import UIKit
 import CoreData
 
+var customeColorBlue = UIColor(red: 99.0 / 255.0, green: 188.0 / 255.0, blue: 210.0 / 255.0, alpha: 1) // #63BCD2
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
