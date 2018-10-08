@@ -12,7 +12,7 @@
 "alarm time" = "アラーム時間";
 "record duration" = "録画時間";
 "set alarm" = "目覚ましをセット";
-"app name" = "早起きチャレンジ";
+"app name" = "寝起き撮影";
 
 // cameraVC
 "tap to show/hide screen" = "タップで画面非表示";
@@ -29,5 +29,5 @@
 "tutorial page 2" = "タップでスクリーンを暗くしバッテリーを節約できます";
 "tutorial page 3" = "アラームとともに録画が始まります";
 "tutorial page 4" = "録画された動画で自分の寝起きを確認できます";
-"tutorial page 5" = "録画するためには画面がオンになっている必要があります。Setting -> Display & Brightness -> Auto-Lock -> Never で自動ロックをオフにしてください";
+"tutorial page 5" = "録画するためには画面がオンになっている必要があります。設定 -> 画面表示と明るさ -> 自動ロック -> なし";
 "end tutorial" = "チュートリアルを終了";

@@ -12,7 +12,7 @@
 "alarm time" = "alarmTime";
 "record duration" = "Record Duration";
 "set alarm" = "Set Alarm";
-"app name" = "Wake Up Challenge";
+"app name" = "WakeRec";
 
 // cameraVC
 "tap to show/hide screen" = "Tap to show/hide screen";
@@ -28,7 +28,7 @@
 "tutorial page 1" = "Place your phone, front camera facing you.";
 "tutorial page 2" = "Tap to turn off the screen and save battery";
 "tutorial page 3" = "Recording starts with the alarm sound until you tap the stop button";
-"tutorial page 4" = "Share the saved video to your friends";
-"tutorial page 5" = "In order to record, the app needs to be open when the alarm rings. Set Auto-Lock to Never from Setting -> Display & Brightness -> Auto-Lock -> Never";
+"tutorial page 4" = "You can see how you wake up in the saved video";
+"tutorial page 5" = "In order to record, the app needs to be open when the alarm rings. Set Setting -> Display & Brightness -> Auto-Lock -> Never";
 "end tutorial" = "End Tutorial";
 

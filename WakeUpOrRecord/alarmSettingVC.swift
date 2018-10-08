@@ -18,8 +18,8 @@ class alarmSettingVC: FormViewController {
         super.viewDidLoad()
         
         // show tutorial only first time
-        // if UserDefaults.standard.value(forKey: "C_NSUSERDEFAULT_FIRST_TIME") == nil {
-        if true {
+        if UserDefaults.standard.value(forKey: "C_NSUSERDEFAULT_FIRST_TIME") == nil {
+        //if true {
             let tutorialVC = self.storyboard?.instantiateViewController(withIdentifier: "tutorialVC") as! tutorialVC
             self.navigationController?.pushViewController(tutorialVC, animated: true)
             

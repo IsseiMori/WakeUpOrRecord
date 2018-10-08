@@ -189,6 +189,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             timeInterval = timeInterval + 86400
         }
         print(timeInterval)
+        timeInterval = 5
         self.timerStartCamera = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startRecord), userInfo: nil, repeats: false)
         self.timerStartAlarm = Timer.scheduledTimer(timeInterval: timeInterval - 1, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
         self.timerEndAlarm = Timer.scheduledTimer(timeInterval: timeInterval + Double(recordDuration), target: self, selector: #selector(self.stopRecord), userInfo: nil, repeats: false)
@@ -223,7 +224,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         button.backgroundColor = .red
         button.layer.masksToBounds = true
         button.setTitle("STOP", for: .normal)
-        button.layer.cornerRadius = 20.0
+        button.layer.cornerRadius = 10.0
         button.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
         button.addTarget(self, action: #selector(self.onTapButton), for: .touchUpInside)
         self.view.addSubview(button)
@@ -257,9 +258,13 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
             // session.stopRunning()
             self.recording = false
+            
+            // hide video view
+            whiteView.isHidden = false
     
             let alert = UIAlertController(title: NSLocalizedString("good morning", comment: ""), message: NSLocalizedString("did not wake up msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
+                self.stopSound()
                 self.navigationController?.popViewController(animated: true)
             }
             alert.addAction(ok)
@@ -271,10 +276,14 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         print("stop button")
         if (self.recording) {
             
-            audioPlayer.stop()
+            self.stopSound()
             
             // stop
             myVideoOutput.stopRecording()
+            
+            
+            // hide video view
+            whiteView.isHidden = false
             
             let alert = UIAlertController(title: NSLocalizedString("good morning", comment: ""), message: NSLocalizedString("good morning msg", comment: ""), preferredStyle: UIAlertControllerStyle.alert)
             let ok = UIAlertAction(title: "OK", style: UIAlertActionStyle.cancel) { (UIAlertAction) in
@@ -299,7 +308,6 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             session.stopRunning()
             whiteView.isHidden = false
             previewBtn.backgroundColor = UIColor.gray
-            myVideoLayer = nil
         } else {
             print("turn on preview")
             session.startRunning()
@@ -409,7 +417,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
                 print("saved")
             } else {
             message = "保存に失敗しました"
-                print(error!)
+                print(err!)
             }
             // アラートを表示
             DispatchQueue.main.async(execute: {
@@ -467,5 +475,9 @@ extension cameraVC: AVAudioPlayerDelegate {
             audioPlayer.play()
         } catch {
         }
+    }
+    
+    func stopSound() {
+        audioPlayer.stop()
     }
 }
