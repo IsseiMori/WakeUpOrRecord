@@ -12,7 +12,7 @@
 "alarm time" = "アラーム時間";
 "record duration" = "録画時間";
 "set alarm" = "目覚ましをセット";
-"app name" = "寝起き撮影";
+"app name" = "目覚ましカメラ";
 
 // cameraVC
 "tap to show/hide screen" = "タップで画面非表示";
@@ -22,6 +22,7 @@
 "good morning msg" = "録画しました";
 "did not wake up msg" = "時間に起きませんでした";
 "preview" = "プレビュー";
+"stop" = "停止";
 
 
 // tutorialVC

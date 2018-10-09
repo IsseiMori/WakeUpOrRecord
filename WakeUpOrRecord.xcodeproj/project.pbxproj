@@ -13,6 +13,7 @@
 		8532F22C216A93AF00094498 /* tutorial2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8532F228216A93AE00094498 /* tutorial2.png */; };
 		8532F22D216A93AF00094498 /* tutorial3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8532F229216A93AF00094498 /* tutorial3.png */; };
 		8532F22E216A93AF00094498 /* tutorial4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8532F22A216A93AF00094498 /* tutorial4.png */; };
+		8532F239216C072A00094498 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8532F23B216C072A00094498 /* InfoPlist.strings */; };
 		8595FC4E2158183F00966E8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC4D2158183F00966E8A /* AppDelegate.swift */; };
 		8595FC532158183F00966E8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8595FC512158183F00966E8A /* Main.storyboard */; };
 		8595FC562158183F00966E8A /* WakeUpOrRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8595FC542158183F00966E8A /* WakeUpOrRecord.xcdatamodeld */; };
@@ -37,6 +38,8 @@
 		8532F228216A93AE00094498 /* tutorial2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial2.png; sourceTree = "<group>"; };
 		8532F229216A93AF00094498 /* tutorial3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial3.png; sourceTree = "<group>"; };
 		8532F22A216A93AF00094498 /* tutorial4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tutorial4.png; sourceTree = "<group>"; };
+		8532F23A216C072A00094498 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		8532F23C216C075500094498 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8595FC4A2158183F00966E8A /* WakeUpOrRecord.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUpOrRecord.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8595FC4D2158183F00966E8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8595FC522158183F00966E8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 				8595FC6A2158D30200966E8A /* alarmSettingVC.swift */,
 				8595FC73215B68FF00966E8A /* Localizable.strings */,
 				8532F225215C80C400094498 /* tutorialVC.swift */,
+				8532F23B216C072A00094498 /* InfoPlist.strings */,
 			);
 			path = WakeUpOrRecord;
 			sourceTree = "<group>";
@@ -223,6 +227,7 @@
 				8595FC6D215AD57800966E8A /* watch.mp3 in Resources */,
 				8532F22E216A93AF00094498 /* tutorial4.png in Resources */,
 				8532F22D216A93AF00094498 /* tutorial3.png in Resources */,
+				8532F239216C072A00094498 /* InfoPlist.strings in Resources */,
 				8595FC7A215B79FF00966E8A /* back.png in Resources */,
 				8595FC79215B79FF00966E8A /* back@3x.png in Resources */,
 				8595FC6721584C6400966E8A /* dog.mp3 in Resources */,
@@ -293,6 +298,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		8532F23B216C072A00094498 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8532F23A216C072A00094498 /* ja */,
+				8532F23C216C075500094498 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		8595FC512158183F00966E8A /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

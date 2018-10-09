@@ -67,7 +67,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         self.navigationItem.hidesBackButton = true
         let backBtn = UIBarButtonItem(image: UIImage(named: "back.png"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(self.back))
         self.navigationItem.leftBarButtonItem = backBtn
-        
+
         // セッションの作成
         session = AVCaptureSession()
         
@@ -105,10 +105,10 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         
         // Viewに追加
         self.view.layer.addSublayer(myVideoLayer!)
-        
+
         let width = self.view.frame.size.width
         let height = self.view.frame.size.height
-        
+
         whiteView = UIView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
         whiteView.backgroundColor = UIColor.white
         self.view.addSubview(whiteView)
@@ -179,7 +179,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         }
         alert.addAction(ok)
         present(alert, animated: true, completion: nil)
-        
+
     }
     
     func setAlarm() {
@@ -189,7 +189,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
             timeInterval = timeInterval + 86400
         }
         print(timeInterval)
-        timeInterval = 5
+        // timeInterval = 5
         self.timerStartCamera = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(self.startRecord), userInfo: nil, repeats: false)
         self.timerStartAlarm = Timer.scheduledTimer(timeInterval: timeInterval - 1, target: self, selector: #selector(self.startAlarm), userInfo: nil, repeats: false)
         self.timerEndAlarm = Timer.scheduledTimer(timeInterval: timeInterval + Double(recordDuration), target: self, selector: #selector(self.stopRecord), userInfo: nil, repeats: false)
@@ -211,6 +211,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         blackView.isHidden = true
         tapToHideTxt.isHidden = true
         clockLbl.isHidden = true
+        previewBtn.isHidden = true
         
         
         print("hide things")
@@ -223,7 +224,7 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
         button = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
         button.backgroundColor = .red
         button.layer.masksToBounds = true
-        button.setTitle("STOP", for: .normal)
+        button.setTitle(NSLocalizedString("stop", comment: ""), for: .normal)
         button.layer.cornerRadius = 10.0
         button.layer.position = CGPoint(x: self.view.bounds.width/2, y:self.view.bounds.height-50)
         button.addTarget(self, action: #selector(self.onTapButton), for: .touchUpInside)
@@ -297,7 +298,13 @@ class cameraVC: UIViewController, AVCaptureFileOutputRecordingDelegate {
     @objc func updateTime() {
         let date = NSDate()
         let calendar = NSCalendar.current
-        clockLbl.text = "\(calendar.component(.hour, from: date as Date)) : \(calendar.component(.minute, from: date as Date))"
+        let hour = "\(calendar.component(.hour, from: date as Date))"
+        var minute = "\(calendar.component(.minute, from: date as Date))"
+        // add 0 to minute if one digit
+        if minute.count <= 1 {
+            minute = "0\(minute)"
+        }
+        clockLbl.text = hour + " : " + minute
         clockLbl.sizeToFit()
         clockLbl.center = self.view.center
     }

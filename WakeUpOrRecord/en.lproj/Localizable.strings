@@ -12,7 +12,7 @@
 "alarm time" = "alarmTime";
 "record duration" = "Record Duration";
 "set alarm" = "Set Alarm";
-"app name" = "WakeRec";
+"app name" = "AlarmCam";
 
 // cameraVC
 "tap to show/hide screen" = "Tap to show/hide screen";
@@ -22,6 +22,7 @@
 "good morning msg" = "We recorded you";
 "did not wake up msg" = "You didn't wake up";
 "preview" = "Preview";
+"stop" = "STOP";
 
 
 // tutorialVC
